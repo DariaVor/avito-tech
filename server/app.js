@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const ItemTypes = {
   REAL_ESTATE: 'Недвижимость',
@@ -8,6 +9,7 @@ const ItemTypes = {
 };
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 // In-memory хранилище для объявлений
