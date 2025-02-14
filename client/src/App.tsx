@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from 'react-router';
-import './App.css';
 import { Form, Item, List, NotFound } from './page';
 
 const App: React.FC = () => {
