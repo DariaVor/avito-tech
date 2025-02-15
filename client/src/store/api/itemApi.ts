@@ -3,7 +3,7 @@ import { Item, CreateItemRequest } from "../types";
 
 export const itemApi = createApi({
   reducerPath: "itemApi",
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000" }),
   tagTypes: ["Item"],
   endpoints: (builder) => ({
     getItems: builder.query<Item[], void>({
@@ -28,14 +28,14 @@ export const itemApi = createApi({
         method: "PUT",
         body: item,
       }),
-      invalidatesTags: (_result, _error, { id }) => [{ type: "Item", id }],
+      invalidatesTags: ["Item"],
     }),
     deleteItem: builder.mutation<void, number>({
       query: (id) => ({
         url: `/items/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (_result, _error, id) => [{ type: "Item", id }],
+      invalidatesTags: ["Item"],
     }),
   }),
 });

@@ -7,7 +7,7 @@ const App: React.FC = () => {
       <Route path='/' element={<Navigate to='/list' replace />} />
       <Route path='/list' element={<List />} />
       <Route path='/item/:id' element={<Item />} />
-      <Route path='/form' element={<Form />} />
+      <Route path="/form/:id?" element={<Form />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   );

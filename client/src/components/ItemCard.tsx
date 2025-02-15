@@ -24,6 +24,7 @@ export const ItemCard: React.FC<ItemCardProps> = ({ id, name, location, image, t
         boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
         maxWidth: 600,
         mx: 'auto',
+        border: '1px solid black',
       }}
     >
       <CardMedia
@@ -48,23 +49,21 @@ export const ItemCard: React.FC<ItemCardProps> = ({ id, name, location, image, t
         <Typography variant='body2' color='text.secondary'>
           {location}
         </Typography>
-        <Box
+        <Typography
+          variant='body2'
+          color='text.secondary'
           sx={{
-            display: 'inline-block',
-            backgroundColor: '#e0f7fa',
-            color: '#00796b',
-            fontSize: '0.8rem',
-            fontWeight: 'bold',
-            borderRadius: '4px',
-            px: 1,
-            py: 0.5,
             mt: 1,
+            backgroundColor: '#e0f7fa',
             textAlign: 'center',
             alignSelf: 'start',
+            px: 1,
+            py: 0.5,
+            borderRadius: 1,
           }}
         >
           {type}
-        </Box>
+        </Typography>
       </Box>
 
       <Button
@@ -72,17 +71,13 @@ export const ItemCard: React.FC<ItemCardProps> = ({ id, name, location, image, t
         component={Link}
         to={`/item/${id}`}
         sx={{
-          backgroundColor: '#a8db97',
+          backgroundColor: '#b1f2bc',
           color: 'black',
-          fontWeight: 'bold',
-          textTransform: 'none',
-          borderRadius: 2,
-          ':hover': {
-            backgroundColor: '#90c789',
-          },
+          border: 1,
+          borderColor: 'black',
         }}
       >
-        Открыть
+        Подробнее
       </Button>
     </Card>
   );
