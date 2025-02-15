@@ -1,7 +1,8 @@
-import { Box, Card, CardMedia, Typography } from '@mui/material';
+import React from 'react';
+import { Card, CardMedia, Box, Typography } from '@mui/material';
 import noImage from '../../assets/no-image.svg';
-import { DetailsButton } from '../ui';
 import { Item } from '../../types';
+import { DetailsButton, TypeChip } from '../ui';
 
 interface ItemCardProps {
   item: Item;
@@ -48,21 +49,7 @@ export const ItemCard: React.FC<ItemCardProps> = ({
         <Typography variant='body2' color='text.secondary'>
           {location}
         </Typography>
-        <Typography
-          variant='body2'
-          color='text.secondary'
-          sx={{
-            mt: 1,
-            backgroundColor: '#e0f7fa',
-            textAlign: 'center',
-            alignSelf: 'start',
-            px: 1,
-            py: 0.5,
-            borderRadius: 1,
-          }}
-        >
-          {type}
-        </Typography>
+        <TypeChip type={type} />
       </Box>
 
       <DetailsButton to={`/item/${id}`} />
