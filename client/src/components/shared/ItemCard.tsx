@@ -1,16 +1,15 @@
 import { Box, Card, CardMedia, Typography } from '@mui/material';
 import noImage from '../../assets/no-image.svg';
 import { DetailsButton } from '../ui';
+import { Item } from '../../types';
 
 interface ItemCardProps {
-  id: number;
-  name: string;
-  location: string;
-  type: string;
-  image?: string;
+  item: Item;
 }
 
-export const ItemCard: React.FC<ItemCardProps> = ({ id, name, location, image, type }) => {
+export const ItemCard: React.FC<ItemCardProps> = ({
+  item: { id, name, location, type, image },
+}) => {
   return (
     <Card
       sx={{

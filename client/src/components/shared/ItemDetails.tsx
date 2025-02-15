@@ -1,5 +1,5 @@
 import { Container, Divider, Grid, Typography } from '@mui/material';
-import { AutoItem, ItemType, RealEstateItem, ServiceItem } from '../../store/types';
+import { AutoItem, ItemType, RealEstateItem, ServiceItem } from '../../types';
 import noImage from '../../assets/no-image.svg';
 import { useNavigate, useParams } from 'react-router';
 import { useDeleteItemMutation } from '../../store/api/itemApi';

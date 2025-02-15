@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ItemType } from '../store/types';
+import { ItemType } from '../types';
 
 const capitalize = (s: string) => (s.length > 0 ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 
@@ -31,15 +31,24 @@ const realEstateSchema = baseSchema.extend({
     .transform((s) => capitalize(s.trim())),
   area: z.preprocess(
     (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
-    z.number({ invalid_type_error: 'Площадь должна быть числом' }).min(1, 'Площадь не может быть меньше 1').max(100000, 'Площадь не должна превышать 100000 квадратных метров')
+    z
+      .number({ invalid_type_error: 'Площадь должна быть числом' })
+      .min(1, 'Площадь не может быть меньше 1')
+      .max(100000, 'Площадь не должна превышать 100000 квадратных метров'),
   ),
   rooms: z.preprocess(
     (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
-    z.number({ invalid_type_error: 'Количество комнат должно быть числом' }).min(1, 'Количество комнат не может быть меньше 1').max(100, 'Количество комнат не должно превышать 100')
+    z
+      .number({ invalid_type_error: 'Количество комнат должно быть числом' })
+      .min(1, 'Количество комнат не может быть меньше 1')
+      .max(100, 'Количество комнат не должно превышать 100'),
   ),
   price: z.preprocess(
     (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
-    z.number({ invalid_type_error: 'Цена должна быть числом' }).min(0, 'Цена не может быть отрицательной').max(1000000000, 'Цена не должна превышать 1000000000 рублей')
+    z
+      .number({ invalid_type_error: 'Цена должна быть числом' })
+      .min(0, 'Цена не может быть отрицательной')
+      .max(1000000000, 'Цена не должна превышать 1000000000 рублей'),
   ),
 });
 
@@ -57,12 +66,18 @@ const autoSchema = baseSchema.extend({
     .transform((s) => s.trim()),
   year: z.preprocess(
     (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
-    z.number({ invalid_type_error: 'Год выпуска должен быть числом' }).min(1886, 'Год выпуска не может быть меньше 1886').max(2025, 'Год выпуска не должен превышать 2025')
+    z
+      .number({ invalid_type_error: 'Год выпуска должен быть числом' })
+      .min(1886, 'Год выпуска не может быть меньше 1886')
+      .max(2025, 'Год выпуска не должен превышать 2025'),
   ),
   mileage: z
     .preprocess(
       (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
-      z.number({ invalid_type_error: 'Пробег должен быть числом' }).min(0, 'Пробег не может быть отрицательным').max(1000000, 'Пробег не должен превышать 1000000 километров')
+      z
+        .number({ invalid_type_error: 'Пробег должен быть числом' })
+        .min(0, 'Пробег не может быть отрицательным')
+        .max(1000000, 'Пробег не должен превышать 1000000 километров'),
     )
     .optional(),
 });
@@ -76,13 +91,22 @@ const servicesSchema = baseSchema.extend({
     .transform((s) => capitalize(s.trim())),
   experience: z.preprocess(
     (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
-    z.number({ invalid_type_error: 'Опыт работы должен быть числом' }).min(0, 'Опыт работы не может быть отрицательным').max(100, 'Опыт работы не должен превышать 100 лет')
+    z
+      .number({ invalid_type_error: 'Опыт работы должен быть числом' })
+      .min(0, 'Опыт работы не может быть отрицательным')
+      .max(100, 'Опыт работы не должен превышать 100 лет'),
   ),
   cost: z.preprocess(
     (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
-    z.number({ invalid_type_error: 'Стоимость должна быть числом' }).min(0, 'Стоимость не может быть отрицательной').max(1000000, 'Стоимость не должна превышать 1000000 рублей')
+    z
+      .number({ invalid_type_error: 'Стоимость должна быть числом' })
+      .min(0, 'Стоимость не может быть отрицательной')
+      .max(1000000, 'Стоимость не должна превышать 1000000 рублей'),
   ),
-  workSchedule: z.string().optional().transform((s) => s?.trim()),
+  workSchedule: z
+    .string()
+    .optional()
+    .transform((s) => s?.trim()),
 });
 
 export const advertisementSchema = z.discriminatedUnion('type', [

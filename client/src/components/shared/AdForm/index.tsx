@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { advertisementSchema } from '../../../validation/adSchema';
 import { Grid } from '@mui/material';
 import { z } from 'zod';
-import { ItemType } from '../../../store/types';
+import { ItemType } from '../../../types';
 import { BackButton, EditButton } from '../../ui';
 import { CommonFields } from './CommonFields';
 import { RealEstateFields } from './RealEstateFields';

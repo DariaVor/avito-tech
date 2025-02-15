@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, TextField, MenuItem } from '@mui/material';
 import { Controller, UseFormReturn } from 'react-hook-form';
 import { AdvertisementFormData } from '.';
-import { ItemType } from '../../../store/types';
+import { ItemType } from '../../../types';
 
 interface CommonFieldsProps {
   form: UseFormReturn<AdvertisementFormData>;
