@@ -20,9 +20,7 @@ export const Item: React.FC = () => {
 
   return (
     <Container sx={{ display: 'flex', flexDirection: 'column', mt: 4, alignItems: 'center' }}>
-      <Typography variant='h4' gutterBottom>
-        Детали объявления
-      </Typography>
+      <Typography variant='h4'>Детали объявления</Typography>
       {item ? (
         <>
           <ItemDetails item={item} />
