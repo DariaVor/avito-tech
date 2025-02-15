@@ -1,8 +1,9 @@
-import { Button, Container, Divider, Grid, Typography } from '@mui/material';
-import { AutoItem, ItemType, RealEstateItem, ServiceItem } from '../store/types';
-import noImage from '../assets/no-image.svg';
+import { Container, Divider, Grid, Typography } from '@mui/material';
+import { AutoItem, ItemType, RealEstateItem, ServiceItem } from '../../store/types';
+import noImage from '../../assets/no-image.svg';
 import { useNavigate, useParams } from 'react-router';
-import { useDeleteItemMutation } from '../store/api/itemApi';
+import { useDeleteItemMutation } from '../../store/api/itemApi';
+import { BackButton, DeleteButton, EditButton } from '../ui';
 
 const pluralizeExperience = (experience: number) => {
   if (experience === 1) {
@@ -96,45 +97,9 @@ export const ItemDetails: React.FC<{ item: RealEstateItem | AutoItem | ServiceIt
 
           <Divider sx={{ my: 2 }} />
 
-          <Button
-            variant='contained'
-            sx={{
-              mt: 2,
-              backgroundColor: '#f2f1f0',
-              color: 'black',
-              border: 1,
-              borderColor: 'black',
-            }}
-            onClick={() => navigate(`/list`)}
-          >
-            Назад
-          </Button>
-          <Button
-            variant='contained'
-            sx={{
-              mt: 2,
-              backgroundColor: '#a3d7ff',
-              color: 'black',
-              border: 1,
-              borderColor: 'black',
-            }}
-            onClick={() => navigate(`/form/${id}`)}
-          >
-            Редактировать
-          </Button>
-          <Button
-            variant='contained'
-            sx={{
-              mt: 2,
-              backgroundColor: '#f5bdbc',
-              color: 'black',
-              border: 1,
-              borderColor: 'black',
-            }}
-            onClick={handleDelete}
-          >
-            Удалить
-          </Button>
+          <BackButton to='/list' />
+          <EditButton to={`/form/${id}`} />
+          <DeleteButton onClick={handleDelete} />
         </Grid>
       </Grid>
     </Container>

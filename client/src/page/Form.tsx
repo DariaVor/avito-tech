@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { Container, Typography, CircularProgress } from '@mui/material';
-import { AdvertisementForm, AdvertisementFormData } from '../components/AdForm';
+import { AdvertisementForm, AdvertisementFormData } from '../components/shared/AdForm';
 import {
   useGetItemByIdQuery,
   useCreateItemMutation,

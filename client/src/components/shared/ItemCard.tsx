@@ -1,6 +1,6 @@
-import { Box, Button, Card, CardMedia, Typography } from '@mui/material';
-import { Link } from 'react-router';
-import noImage from '../assets/no-image.svg';
+import { Box, Card, CardMedia, Typography } from '@mui/material';
+import noImage from '../../assets/no-image.svg';
+import { DetailsButton } from '../ui';
 
 interface ItemCardProps {
   id: number;
@@ -66,19 +66,7 @@ export const ItemCard: React.FC<ItemCardProps> = ({ id, name, location, image, t
         </Typography>
       </Box>
 
-      <Button
-        variant='contained'
-        component={Link}
-        to={`/item/${id}`}
-        sx={{
-          backgroundColor: '#b1f2bc',
-          color: 'black',
-          border: 1,
-          borderColor: 'black',
-        }}
-      >
-        Подробнее
-      </Button>
+      <DetailsButton to={`/item/${id}`} />
     </Card>
   );
 };

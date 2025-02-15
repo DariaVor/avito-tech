@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, CircularProgress, Typography } from '@mui/material';
 import { useParams } from 'react-router';
 import { useGetItemByIdQuery } from '../store/api/itemApi';
-import { ItemDetails } from '../components/ItemDetails';
+import { ItemDetails } from '../components/shared/ItemDetails';
 
 export const Item: React.FC = () => {
   const { id } = useParams<{ id: string }>();

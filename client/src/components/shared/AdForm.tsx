@@ -1,10 +1,11 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { advertisementSchema } from '../validation/adSchema';
-import { TextField, Button, MenuItem, Grid } from '@mui/material';
+import { advertisementSchema } from '../../validation/adSchema';
+import { TextField, MenuItem, Grid } from '@mui/material';
 import { z } from 'zod';
-import { ItemType } from '../store/types';
+import { ItemType } from '../../store/types';
+import { BackButton, EditButton } from '../ui';
 
 export type AdvertisementFormData = z.infer<typeof advertisementSchema>;
 
@@ -403,32 +404,10 @@ export const AdvertisementForm: React.FC<AdvertisementFormProps> = ({
 
         <Grid item xs={12} container spacing={2} justifyContent='flex-end'>
           <Grid item>
-            <Button
-              variant='contained'
-              onClick={onCancel}
-              sx={{
-                backgroundColor: '#f2f1f0',
-                color: 'black',
-                border: 1,
-                borderColor: 'black',
-              }}
-            >
-              Отмена
-            </Button>
+            <BackButton onClick={onCancel}>Отмена</BackButton>
           </Grid>
           <Grid item>
-            <Button
-              variant='contained'
-              type='submit'
-              sx={{
-                backgroundColor: '#a3d7ff',
-                color: 'black',
-                border: 1,
-                borderColor: 'black',
-              }}
-            >
-              {isEditing ? 'Сохранить' : 'Создать'}
-            </Button>
+            <EditButton type='submit'>{isEditing ? 'Сохранить' : 'Создать'}</EditButton>
           </Grid>
         </Grid>
       </Grid>
