@@ -11,7 +11,7 @@ interface DetailsButtonProps {
 export const DetailsButton: React.FC<DetailsButtonProps> = ({ to, children, sx }) => {
   return (
     <Button
-      variant='contained'
+      variant="contained"
       component={Link}
       to={to}
       sx={{
@@ -19,6 +19,11 @@ export const DetailsButton: React.FC<DetailsButtonProps> = ({ to, children, sx }
         color: 'black',
         border: 1,
         borderColor: 'black',
+        whiteSpace: 'normal',
+        wordWrap: 'break-word',
+        textAlign: 'center',
+        flexShrink: 0,
+        maxWidth: '100%',
         ...sx,
       }}
     >

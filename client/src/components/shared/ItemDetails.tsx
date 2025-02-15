@@ -37,20 +37,11 @@ export const ItemDetails: React.FC<{
     <Container
       sx={{
         mt: 4,
-        border: '1px solid black',
         borderRadius: '8px',
         p: 2,
-        maxWidth: { xs: '100%', md: 800 },
+        maxWidth: { xs: '100%', md: 1280 },
       }}
     >
-      <Typography
-        variant='h4'
-        gutterBottom
-        sx={{ mb: 1, whiteSpace: 'normal', wordBreak: 'break-word' }}
-      >
-        {item.name}
-      </Typography>
-
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
           <Box
@@ -68,8 +59,12 @@ export const ItemDetails: React.FC<{
 
         <Grid item xs={12} md={8}>
           <Box>
-            <Typography variant='h6' sx={{ mb: 1, whiteSpace: 'normal', wordBreak: 'break-word' }}>
-              {item.description}
+            <Typography
+              variant='h4'
+              gutterBottom
+              sx={{ mb: 1, whiteSpace: 'normal', wordBreak: 'break-word' }}
+            >
+              {item.name}
             </Typography>
             <Typography
               variant='body1'
@@ -123,7 +118,10 @@ export const ItemDetails: React.FC<{
 
           <Divider sx={{ my: 2 }} />
 
-          <Container sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2, flexWrap: 'wrap' }}>
+          <Typography variant='body1' sx={{ mb: 1, whiteSpace: 'normal', wordBreak: 'break-word' }}>
+            {item.description}
+          </Typography>
+          <Container sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1, flexWrap: 'wrap' }}>
             <BackButton to='/list' />
             <EditButton to={`/form/${id}`} />
             <DeleteButton onClick={handleDelete} />

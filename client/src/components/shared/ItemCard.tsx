@@ -15,9 +15,10 @@ export const ItemCard: React.FC<ItemCardProps> = ({
     <Card
       sx={{
         display: 'flex',
+        flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'space-between',
-        flexDirection: 'row',
+        flexDirection: { xs: 'column', sm: 'row' },
         p: 2,
         mb: 2,
         borderRadius: 2,
@@ -30,8 +31,8 @@ export const ItemCard: React.FC<ItemCardProps> = ({
       <CardMedia
         component='img'
         sx={{
-          width: 100,
-          height: 100,
+          width: { xs: '100%', sm: 100 },
+          height: { xs: 'auto', sm: 100 },
           objectFit: 'cover',
           borderRadius: 1,
           flexShrink: 0,
@@ -41,18 +42,42 @@ export const ItemCard: React.FC<ItemCardProps> = ({
       />
 
       <Box
-        sx={{ flex: 1, mx: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+        sx={{
+          flex: 1,
+          mx: 2,
+          display: { xs: 'none', sm: 'flex' },
+          flexDirection: 'column',
+          justifyContent: 'center',
+          minWidth: 0,
+        }}
       >
-        <Typography variant='h6' sx={{ fontWeight: 'bold', mb: 0.5 }}>
+        <Typography
+          variant='h6'
+          sx={{
+            fontWeight: 'bold',
+            mb: 0.5,
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
           {name}
         </Typography>
-        <Typography variant='body2' color='text.secondary'>
+        <Typography
+          variant='body2'
+          color='text.secondary'
+          sx={{
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
           {location}
         </Typography>
         <TypeChip type={type} />
       </Box>
 
-      <DetailsButton to={`/item/${id}`} />
+      <DetailsButton to={`/item/${id}`} sx={{ mt: { xs: 2, sm: 1 } }} />
     </Card>
   );
 };
