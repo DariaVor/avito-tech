@@ -9,6 +9,7 @@ import {
   useUpdateItemMutation,
 } from '../store/api/itemApi';
 import { ErrorMessage, Loader } from '../components/shared';
+import { toast } from 'react-toastify';
 
 const Form: React.FC = () => {
   const { id } = useParams<{ id?: string }>();
@@ -37,12 +38,14 @@ const Form: React.FC = () => {
     try {
       if (isEditing && id) {
         await updateItem({ id: Number(id), item: data }).unwrap();
+        toast.success('Объявление успешно обновлено!');
       } else {
         await createItem(data).unwrap();
+        toast.success('Объявление успешно создано!');
       }
       navigate('/list');
     } catch (error) {
-      console.error('Ошибка сохранения объявления:', error);
+      toast.error('Ошибка при сохранении объявления');
     }
   };
 

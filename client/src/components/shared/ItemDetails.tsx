@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router';
 import { useDeleteItemMutation } from '../../store/api/itemApi';
 import { BackButton, DeleteButton, EditButton } from '../ui';
 import { pluralizeExperience, separateNumbers } from '../../utils/format';
+import { toast } from 'react-toastify';
 
 export const ItemDetails: React.FC<{
   item: RealEstateItem | AutoItem | ServiceItem;
@@ -18,9 +19,10 @@ export const ItemDetails: React.FC<{
   const handleDelete = async () => {
     try {
       await deleteItem(Number(item.id)).unwrap();
+      toast.success('Объявление успешно удалено!');
       navigate('/list');
     } catch (error) {
-      console.error('Ошибка удаления объявления:', error);
+      toast.error('Ошибка удаления объявления');
     }
   };
 

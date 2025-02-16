@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router';
 import { Loader } from './components/shared';
+import { ToastContainer } from 'react-toastify';
 
 const List = lazy(() => import('./page/List'));
 const Item = lazy(() => import('./page/Item'));
@@ -18,6 +19,7 @@ const App: React.FC = () => (
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Suspense>
+    <ToastContainer position="top-right" autoClose={3000} />
   </>
 );
 
