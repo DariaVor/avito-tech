@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import { useGetItemsQuery } from '../store/api/itemApi';
-import { ItemCard } from '../components/shared/ItemCard';
 import { DetailsButton } from '../components/ui';
 import { Item } from '../types';
 import useDebounce from '../hooks/useDebounce';
-import { CategoryFilter, PaginationControls, SearchBar } from '../components/shared/ItemsList';
+import {
+  CategoryFilter,
+  ErrorMessage,
+  ItemCard,
+  Loader,
+  PaginationControls,
+  SearchBar,
+} from '../components/shared';
 
-export const List: React.FC = () => {
+const List: React.FC = () => {
   const { data: items, isLoading, error } = useGetItemsQuery();
 
   const [searchText, setSearchText] = useState<string>('');
@@ -76,8 +82,8 @@ export const List: React.FC = () => {
         Разместить объявление
       </DetailsButton>
 
-      {isLoading && <Typography>Загрузка...</Typography>}
-      {error && <Typography>Произошла ошибка при загрузке данных</Typography>}
+      {isLoading && <Loader />}
+      {error && <ErrorMessage message='Произошла ошибка при загрузке данных' />}
 
       <Grid container spacing={4}>
         {paginatedItems.map((item: Item) => (
@@ -97,3 +103,5 @@ export const List: React.FC = () => {
     </Container>
   );
 };
+
+export default List;

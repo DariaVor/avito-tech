@@ -1,32 +1,38 @@
 import React from 'react';
-import { Container, CircularProgress, Typography } from '@mui/material';
+import { Container } from '@mui/material';
 import { useParams } from 'react-router';
 import { useGetItemByIdQuery } from '../store/api/itemApi';
-import { ItemDetails } from '../components/shared/ItemDetails';
+import { ErrorMessage, ItemDetails, Loader } from '../components/shared';
 
-export const Item: React.FC = () => {
+const Item: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
   const { data: item, isLoading, error } = useGetItemByIdQuery(Number(id));
 
-  if (isLoading)
-    return (
-      <Container sx={{ mt: 4, textAlign: 'center' }}>
-        <CircularProgress />
-      </Container>
-    );
+  if (isLoading) {
+    return <Loader />;
+  }
 
-  if (error) return <Typography sx={{ mt: 4 }}>Произошла ошибка при загрузке данных</Typography>;
+  if (error) {
+    return <ErrorMessage message='Ошибка загрузки объявления' />;
+  }
+
+  if (!item) {
+    return <ErrorMessage message='Объявление не найдено' />;
+  }
 
   return (
-    <Container sx={{ display: 'flex', flexDirection: 'column', mt: 4, alignItems: 'center' }}>
-      {item ? (
-        <>
-          <ItemDetails item={item} />
-        </>
-      ) : (
-        <Typography sx={{ mt: 4 }}>Объявление не найдено</Typography>
-      )}
+    <Container
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        mt: 4,
+        alignItems: 'center',
+      }}
+    >
+      <ItemDetails item={item} />
     </Container>
   );
 };
+
+export default Item;

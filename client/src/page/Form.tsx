@@ -1,19 +1,25 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router';
-import { Container, Typography, CircularProgress } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { AdvertisementForm, AdvertisementFormData } from '../components/shared/AdForm';
+
 import {
   useGetItemByIdQuery,
   useCreateItemMutation,
   useUpdateItemMutation,
 } from '../store/api/itemApi';
+import { ErrorMessage, Loader } from '../components/shared';
 
-export const Form: React.FC = () => {
+const Form: React.FC = () => {
   const { id } = useParams<{ id?: string }>();
   const navigate = useNavigate();
   const isEditing = Boolean(id);
 
-  const { data: item, isLoading: isItemLoading } = useGetItemByIdQuery(Number(id), {
+  const {
+    data: item,
+    isLoading: isItemLoading,
+    error,
+  } = useGetItemByIdQuery(Number(id), {
     skip: !isEditing,
   });
   const [createItem] = useCreateItemMutation();
@@ -41,11 +47,11 @@ export const Form: React.FC = () => {
   };
 
   if (isEditing && isItemLoading) {
-    return (
-      <Container sx={{ mt: 4, textAlign: 'center' }}>
-        <CircularProgress />
-      </Container>
-    );
+    return <Loader />;
+  }
+
+  if (error) {
+    return <ErrorMessage message='Произошла ошибка при загрузке данных' />;
   }
 
   return (
@@ -62,3 +68,5 @@ export const Form: React.FC = () => {
     </Container>
   );
 };
+
+export default Form;

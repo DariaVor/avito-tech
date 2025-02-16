@@ -5,16 +5,7 @@ import noImage from '../../assets/no-image.svg';
 import { useNavigate, useParams } from 'react-router';
 import { useDeleteItemMutation } from '../../store/api/itemApi';
 import { BackButton, DeleteButton, EditButton } from '../ui';
-
-const pluralizeExperience = (experience: number): string => {
-  if (experience === 1) return 'год';
-  if (experience > 1 && experience < 5) return 'года';
-  return 'лет';
-};
-
-const separateNumbers = (n: number): string => {
-  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-};
+import { pluralizeExperience, separateNumbers } from '../../utils/format';
 
 export const ItemDetails: React.FC<{
   item: RealEstateItem | AutoItem | ServiceItem;
