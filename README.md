@@ -34,7 +34,7 @@ npm install
 npm start
 ```
 
-Сервер будет запущен на http://localhost:3000.
+Сервер будет доступен на http://localhost:3000/items.
 
 **Запуск frontend:**
 
@@ -44,7 +44,7 @@ npm install
 npm run dev
 ```
 
-Приложение будет доступно по адресу http://localhost:3000
+Приложение будет доступно на http://localhost:5173/
 
 ## Технологический стек
 
