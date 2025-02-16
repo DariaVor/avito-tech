@@ -22,6 +22,45 @@ const makeCounter = () => {
 
 const itemsIdCounter = makeCounter();
 
+items = [
+  {
+    id: itemsIdCounter(),
+    name: "Квартира в центре",
+    description: "Просторная квартира в центре города",
+    location: "Москва",
+    type: ItemTypes.REAL_ESTATE,
+    image: "https://cdn.apartmenttherapy.info/image/upload/v1619013756/at/house%20tours/2021-04/Erin%20K/KERR-130-CLARKSON-2R-01-020577-EDIT-WEB.jpg",
+    propertyType: "Квартира",
+    area: 100,
+    rooms: 3,
+    price: 15000000
+  },
+  {
+    id: itemsIdCounter(),
+    name: "Toyota Camry",
+    description: "Надежный автомобиль",
+    location: "Москва",
+    type: ItemTypes.AUTO,
+    image: "https://hips.hearstapps.com/hmg-prod/images/2025-toyota-camry-xse-awd-123-66993cc94cc40.jpg",
+    brand: "Toyota",
+    model: "Camry",
+    year: 2020,
+    mileage: 15000
+  },
+  {
+    id: itemsIdCounter(),
+    name: "Ремонт квартир",
+    description: "Качественный ремонт квартир",
+    location: "Москва",
+    type: ItemTypes.SERVICES,
+    image: "https://www.prorabneva.ru/storage/post_content/October2021/rCjF8UD9reKu2sZd2UVw.jpeg",
+    serviceType: "Ремонт",
+    experience: 5,
+    cost: 50000,
+    workSchedule: "Пн-Пт, 9:00-18:00"
+  }
+];
+
 // Создание нового объявления
 app.post('/items', (req, res) => {
   const { name, description, location, type, ...rest } = req.body;
