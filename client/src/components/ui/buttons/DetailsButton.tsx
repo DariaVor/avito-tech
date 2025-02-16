@@ -27,7 +27,7 @@ export const DetailsButton: React.FC<DetailsButtonProps> = ({ to, children, sx }
         ...sx,
       }}
     >
-      {children || 'Подробнее'}
+      {children || 'Открыть'}
     </Button>
   );
 };
