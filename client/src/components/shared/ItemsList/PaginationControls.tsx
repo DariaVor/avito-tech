@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
+import { PaginationButton } from '../../ui';
 
 interface PaginationControlsProps {
   currentPage: number;
@@ -27,25 +28,21 @@ export const PaginationControls: React.FC<PaginationControlsProps> = ({
         mb: 4,
       }}
     >
-      <Button variant='outlined' disabled={currentPage === 1} onClick={onPrevious}>
+      <PaginationButton onClick={onPrevious} disabled={currentPage === 1}>
         Назад
-      </Button>
+      </PaginationButton>
       {Array.from({ length: totalPages }, (_, index) => (
-        <Button
+        <PaginationButton
           key={index + 1}
-          variant={currentPage === index + 1 ? 'contained' : 'outlined'}
+          active={currentPage === index + 1}
           onClick={() => onPageChange(index + 1)}
         >
           {index + 1}
-        </Button>
+        </PaginationButton>
       ))}
-      <Button
-        variant='outlined'
-        disabled={currentPage === totalPages || totalPages === 0}
-        onClick={onNext}
-      >
+      <PaginationButton onClick={onNext} disabled={currentPage === totalPages || totalPages === 0}>
         Далее
-      </Button>
+      </PaginationButton>
     </Box>
   );
 };

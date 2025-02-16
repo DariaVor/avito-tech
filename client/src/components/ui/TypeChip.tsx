@@ -8,8 +8,8 @@ interface TypeChipProps {
 
 const typeColors: Record<ItemType, { background: string; text: string }> = {
   [ItemType.REAL_ESTATE]: { background: '#D9EAFC', text: '#215285' },
-  [ItemType.AUTO]: { background: '#D1C4E9', text: '#4A148C' },
-  [ItemType.SERVICES]: { background: '#FDECAE', text: '#DC9420' },
+  [ItemType.AUTO]: { background: '#DBD0F1', text: '#4A148C' },
+  [ItemType.SERVICES]: { background: '#F7DDF0', text: '#7A1C62' },
 };
 
 export const TypeChip: React.FC<TypeChipProps> = ({ type }) => {
