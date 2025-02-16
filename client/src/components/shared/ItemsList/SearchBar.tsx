@@ -17,14 +17,16 @@ export const SearchBar: React.FC<SearchBarProps> = ({ searchText, onSearchChange
         onChange={(e) => onSearchChange(e.target.value)}
         variant='outlined'
         fullWidth
-        InputProps={{
-          endAdornment: searchText && (
-            <InputAdornment position='end'>
-              <IconButton onClick={onClear}>
-                <ClearIcon />
-              </IconButton>
-            </InputAdornment>
-          ),
+        slotProps={{
+          input: {
+            endAdornment: searchText && (
+              <InputAdornment position='end'>
+                <IconButton onClick={onClear}>
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          },
         }}
       />
     </Box>

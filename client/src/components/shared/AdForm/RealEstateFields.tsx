@@ -87,7 +87,7 @@ export const RealEstateFields: React.FC<RealEstateFieldsProps> = ({
             <TextField
               {...field}
               type='number'
-              slotProps={{ htmlInput: { min: 0 } }}
+              slotProps={{ htmlInput: { min: 1 } }}
               label='Цена'
               fullWidth
               error={!!(errors as any).price}

@@ -51,7 +51,7 @@ export const ServiceFields: React.FC<ServiceFieldsProps> = ({
             <TextField
               {...field}
               type='number'
-              slotProps={{ htmlInput: { min: 0, max: 100, step: 0.5 } }}
+              slotProps={{ htmlInput: { min: 0.5, max: 100, step: 0.5 } }}
               label='Опыт работы (лет)'
               fullWidth
               error={!!(errors as any).experience}
@@ -68,7 +68,7 @@ export const ServiceFields: React.FC<ServiceFieldsProps> = ({
             <TextField
               {...field}
               type='number'
-              slotProps={{ htmlInput: { min: 0 } }}
+              slotProps={{ htmlInput: { min: 1 } }}
               label='Стоимость'
               fullWidth
               error={!!(errors as any).cost}

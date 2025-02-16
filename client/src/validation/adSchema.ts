@@ -46,7 +46,7 @@ const realEstateSchema = baseSchema.extend({
     (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
     z
       .number({ invalid_type_error: 'Цена должна быть числом' })
-      .min(0, 'Цена не может быть отрицательной')
+      .min(1, 'Цена не может быть меньше 1')
       .max(1000000000, 'Цена не должна превышать 1000000000 рублей'),
   ),
 });
@@ -75,7 +75,7 @@ const autoSchema = baseSchema.extend({
       (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
       z
         .number({ invalid_type_error: 'Пробег должен быть числом' })
-        .min(0, 'Пробег не может быть отрицательным')
+        .min(1, 'Пробег не может быть меньше 1')
         .max(1000000, 'Пробег не должен превышать 1000000 километров'),
     )
     .optional(),
@@ -92,14 +92,14 @@ const servicesSchema = baseSchema.extend({
     (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
     z
       .number({ invalid_type_error: 'Опыт работы должен быть числом' })
-      .min(0, 'Опыт работы не может быть отрицательным')
+      .min(0.5, 'Опыт работы не может быть меньше 0.5')
       .max(100, 'Опыт работы не должен превышать 100 лет'),
   ),
   cost: z.preprocess(
     (a) => (typeof a === 'string' && a.trim() !== '' ? Number(a) : a),
     z
       .number({ invalid_type_error: 'Стоимость должна быть числом' })
-      .min(0, 'Стоимость не может быть отрицательной')
+      .min(1, 'Стоимость не может быть меньше 1')
       .max(1000000, 'Стоимость не должна превышать 1000000 рублей'),
   ),
   workSchedule: z

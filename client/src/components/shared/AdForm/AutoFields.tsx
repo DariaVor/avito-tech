@@ -83,7 +83,7 @@ export const AutoFields: React.FC<AutoFieldsProps> = ({
             <TextField
               {...field}
               type='number'
-              slotProps={{ htmlInput: { min: 0 } }}
+              slotProps={{ htmlInput: { min: 1 } }}
               label='Пробег (км)'
               fullWidth
               error={!!(errors as any).mileage}
